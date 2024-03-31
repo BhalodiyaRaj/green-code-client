@@ -3,7 +3,6 @@ import { FaCircle } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 
 function Question({ data, className }) {
-	console.log(data);
 
 	function Level() {
 		var questionLevel = data.level.toLowerCase();
@@ -15,16 +14,6 @@ function Question({ data, className }) {
 			return <FaCircle className="gc-text-green text-xs" />;
 	}
 
-<<<<<<< HEAD
-    function Level() {
-        var questionLevel = data.level.toLowerCase();
-        if (questionLevel === "hard") return (<FaCircle className="text-red-600 text-xs" />);
-        if (questionLevel === "medium") return (<FaCircle className="text-orange-400 text-xs" />);
-        if (questionLevel === "easy") return (<FaCircle className="gc-text-green text-xs" />);
-    }
-    return (
-        <div className={"flex  justify-between items-center border rounded-lg px-3 py-1 bg-white" + ' ' + className}>
-=======
 	return (
 		<div
 			className={
@@ -32,7 +21,6 @@ function Question({ data, className }) {
 				" " +
 				className
 			}>
->>>>>>> dc49e62 (get all question and question by id done at user side)
 			<div>
 				<div className="truncate">
 					<span className="me-2 text-md font-bold">
@@ -56,14 +44,8 @@ function Question({ data, className }) {
 }
 
 Question.propTypes = {
-<<<<<<< HEAD
-    data: PropTypes.object.isRequired,
-    className: PropTypes.string,
-}
-=======
-	data: PropTypes.object.isRequire,
+	data: PropTypes.object.isRequired,
 	className: PropTypes.string,
 };
->>>>>>> dc49e62 (get all question and question by id done at user side)
 
 export default Question;
