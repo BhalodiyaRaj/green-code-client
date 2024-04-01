@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { MdDeleteForever } from "react-icons/md"
 
-const Comment = ({ date, comment, username, className, admin }) => {
+const Comment = ({ date, comment, username, className, admin , ondelete }) => {
 
 
     return (
@@ -15,7 +15,7 @@ const Comment = ({ date, comment, username, className, admin }) => {
                 </div>
                 <div className="text-sm">{date}</div>
                 {
-                    admin === true && <MdDeleteForever className="text-3xl hover:scale-110 hover:cursor-pointer duration-300 text-red-600" />
+                    admin === true && <MdDeleteForever className="text-3xl hover:scale-110 hover:cursor-pointer duration-300 text-red-600" onClick={()=>{ondelete()}} />
                 }
             </div>
             <div className="pt-3 pb-2">
@@ -31,6 +31,7 @@ Comment.propTypes = {
     comment: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     className: PropTypes.string.isRequired,
-    admin: PropTypes.bool.isRequired
+    admin: PropTypes.bool.isRequired,
+    ondelete:PropTypes.func.isRequired
 }
 export default Comment;

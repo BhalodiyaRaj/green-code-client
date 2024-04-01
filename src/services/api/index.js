@@ -84,3 +84,21 @@ export const getSolutions = (id) =>{
     const params = {"question":id}
     return GET({url,params});
 }
+
+// ===================== comments ======================
+export const getComments = (id)=>{
+    const url =`${serverDetails.serverProxyURL}/api/v1/comments`;
+    const params ={"question":id}
+    return GET({url,params})
+}
+
+export const addComment = (id,data)=>{
+    const url = `${serverDetails.serverProxyURL}/api/v1/comments`;
+    const params = {"question":id}
+    return POST({url,params,data})
+}
+
+export const deleteComment = (id)=>{
+    const url = `${serverDetails.serverProxyURL}/api/v1/comments/${id}`;
+    return DELETE({url})
+}
