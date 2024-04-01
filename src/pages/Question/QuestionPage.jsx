@@ -1,5 +1,5 @@
 import { memo, useContext, useState } from "react";
-import { Link, json, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetQuestionById } from "../../hooks/data";
 import { FaCircle } from "react-icons/fa";
 import { AuthContext } from "../../services/context/AuthContext";
@@ -60,7 +60,7 @@ function QuestionPage() {
       })
     }
     function onDelete(id){
-      deleteComment(id).then((res)=>{
+      deleteComment(id).then(()=>{
           setComments(comments.filter((item)=>item._id != id))
       })
     }
