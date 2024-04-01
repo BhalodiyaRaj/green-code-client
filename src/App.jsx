@@ -13,7 +13,6 @@ import { AdminLayout } from "./components/Admin";
 import { Category } from "./pages/Admin/Category";
 import { Language } from "./pages/Admin/Language";
 
-
 function App() {
   return (
     <Routes>
@@ -32,6 +31,7 @@ function App() {
         <Route path="question/:id/edit" element={<AddEditQuestion />} />
 
       </Route>
+      <Route path="/test" element={<></>} />
     </Routes>
   );
 }

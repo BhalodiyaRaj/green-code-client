@@ -1,5 +1,5 @@
-import  { useContext, useState } from "react";
-import { useForm} from "react-hook-form";
+import { useContext, useState } from "react";
+import {useForm} from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -30,17 +30,19 @@ function LogInUser(){
 
     return(
         <div className="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 border rounded-xl px-5 py-3 max-w-[350px] w-[90vw] gc-shadow-9">
-            <img src={LogoWithName} alt='logo' className='w-1/2 mx-auto' />
-            <h1 className="text-center text-lg mt-2">Log In</h1>
+                <div className="flex justify-center pb-2 pt-6">
+						<img src={LogoWithName} width={200} alt="logo of gree-bank"></img>
+				</div>
+                <h3 className="text-center font-bold gc-text-black text-xl pb-2">Log In</h3>
             <p className="text-center text-sm text-red-500">{errorMessages}</p>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-                <label className="text-sm text-gray-500">Username or Email</label>
+                <label className="text-sm text-gray-500 ">Username or Email</label>
                 <input type="text" placeholder="username or email" {...register('username')}
-                className="border rounded-lg p-1" />
+                className="border rounded-lg p-1 mb-3" />
                 <p className="text-xs text-red-500">{errors.username?.message}</p>
                 <label className="text-sm text-gray-500">Password</label>
                 <input type="text" placeholder="Password" {...register('password')}
-                className="border rounded-lg p-1" />
+                className="border rounded-lg p-1 mb-3" />
                 <p className="text-xs text-red-500">{errors.password?.message}</p>
                 <input type="submit" value="Log In" className="gc-bg-green text-white rounded-lg p-1 mt-2 cursor-pointer" />
             </form>
