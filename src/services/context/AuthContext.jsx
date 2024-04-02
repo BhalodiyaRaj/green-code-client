@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
-
+import { logOutUser } from "../api";
 export const AuthContext = React.createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -22,9 +22,15 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     function LogOutUser(){
-        localStorage.clear();
-        setUser();
-        setIsLoggedIn(false);
+        logOutUser()
+        .then(() => {
+            localStorage.clear();
+            setUser(null);
+            setIsLoggedIn(false);
+        })
+        .catch(error => {
+            console.error("Error logging out:", error);
+        }); 
     }
 
     function GetUser(){

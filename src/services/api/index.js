@@ -14,6 +14,10 @@ export const loginUser = (data) =>{
     return POST({url,data});
 }
 
+export const logOutUser = ()=>{
+    const url = `${serverDetails.serverProxyURL}/api/v1/users/logout`;
+    return POST({url})
+}
 
 
 // ===================== Questions =====================

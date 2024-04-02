@@ -22,7 +22,7 @@ function LogInUser(){
     function onSubmit(data){
         loginUser(data).then(()=>{
             LogInUser();
-            Navigate("/");
+            Navigate(-1);
         }).catch((data)=>{
             if(data.code === 'invalid_data')setErrorMessages('Invalid username or password')
         })

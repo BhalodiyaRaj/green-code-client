@@ -21,7 +21,7 @@ function Header() {
   function ProfileMenu(){
     return(
       <div ref={contextMenuRef} className="absolute top-12 right-2 bg-white border rounded-md shadow-lg py-2 px-3 z-20">
-        <button className="block py-1 px-2 hover:bg-gray-100 rounded-md" onClick={LogOutUser}>Log Out</button>
+        <button className="block py-1 px-2 hover:bg-gray-100 rounded-md" onClick={(e)=>{LogOutUser();handleProfileClick(e)}}>Log Out</button>
       </div>
     )
   }
