@@ -106,3 +106,16 @@ export const deleteComment = (id)=>{
     const url = `${serverDetails.serverProxyURL}/api/v1/comments/${id}`;
     return DELETE({url})
 }
+
+
+//========================= likes ========================
+export const addLike = (id)=>{
+    const url = `${serverDetails.serverProxyURL}/api/v1/likes`;
+    const params = {"question":id}
+    return POST({url,params})
+}
+export const deleteLike = (id)=>{
+    const url = `${serverDetails.serverProxyURL}/api/v1/likes`;
+    const params = {"question":id}
+    return DELETE({url,params})
+}

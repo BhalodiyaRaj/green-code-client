@@ -9,7 +9,7 @@ import SelectMenu from "../../lib/Select";
 import useGetSolutions from "../../hooks/data/useGetSolutions";
 import { Comment } from "../../components/Comment";
 import useGetComments from "../../hooks/data/useGetComments";
-import { addComment, deleteComment } from "../../services/api";
+import { addComment, addLike, deleteComment, deleteLike } from "../../services/api";
 
 
 const QuestionSolution = memo(function QuestionSolution() {
@@ -37,7 +37,7 @@ const QuestionSolution = memo(function QuestionSolution() {
 function QuestionPage() {
   const { isLoggedIn, user} = useContext(AuthContext);
   const params = useParams();
-  const [question] = useGetQuestionById(params.id);
+  const [question,setQuestion] = useGetQuestionById(params.id);
   const [isQuestionOpen, setIsQuestionOpen] = useState(true);
 
   function Level() {
@@ -64,8 +64,6 @@ function QuestionPage() {
           setComments(comments.filter((item)=>item._id != id))
       })
     }
-
-
     return (
       <>
         <button className="py-1 font-semibold px-2.5 hover:scale-105 border rounded-full gc-text-green gc-border-green duration-300">
@@ -80,6 +78,19 @@ function QuestionPage() {
         }
       </>
     )
+  }
+
+  function updateLike(){
+    if(question?.isLiked){
+      deleteLike(params.id).then(()=>{
+        setQuestion({...question,isLiked:!question?.isLiked,likes:question?.likes - 1})
+      })
+    }else{
+      addLike(params.id).then(()=>{
+        setQuestion({...question,isLiked:!question?.isLiked,likes:question?.likes + 1})
+      })
+   
+    } 
   }
 
   return (
@@ -113,9 +124,9 @@ function QuestionPage() {
                 </span>
               </div>
               <div className="flex gap-2">
-                <div className="text-sm">{question.likes}</div>
+                <div className="text-sm" >{question.likes}</div>
                 {
-                  question?.isLiked ? <AiFillHeart className={`mx-auto text-xl gc-text-green`} /> : <AiOutlineHeart className={`mx-auto text-xl gc-text-green`} />
+                  question?.isLiked ? <AiFillHeart className={`mx-auto text-xl gc-text-green`} onClick={()=>{updateLike()}} /> : <AiOutlineHeart className={`mx-auto text-xl gc-text-green`} onClick={()=>{updateLike()}}/>
                 }
               </div>
             </div>
