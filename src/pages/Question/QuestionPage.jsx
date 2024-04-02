@@ -20,7 +20,7 @@ const QuestionSolution = memo(function QuestionSolution() {
   return (
     <div className="md:w-1/2">
       <div className="flex justify-end mx-4 py-2">
-        <SelectMenu onChange={(data) => setLanguage(data?.value)} value={language} className="min-w-[130px]" placeholder="Language" isClearable isGreen options={solution?.map((item) => { return { "value": item?.language?.name, "label": item?.language?.name } })} />
+        <SelectMenu onChange={(data) => setLanguage(data?.value)}  className="min-w-[130px]" placeholder="Language" isClearable isGreen options={solution?.map((item) => { return { "value": item?.language?.name, "label": item?.language?.name } })} />
       </div>
       <div className="min-w-[37vw]  mx-4 my-2 p-4 rounded overflow-auto gc-shadow-25 " style={{ height: 'calc(100vh - 132px)' }} >
         {solution?.map((data, index) => {
