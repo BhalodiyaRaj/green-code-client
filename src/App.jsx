@@ -21,7 +21,7 @@ function App() {
         <Route path="/question/:id" element={<QuestionPage />} />
       </Route>
       <Route path="/register" element={<RegisterUser />} />
-      <Route path="/login" element={<LogInUser />} />
+      <Route path="/login/:prevstate?" element={<LogInUser />} />
       <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
         <Route path="" element={<Dashboard />} />
         <Route path="question" element={<Question />} />
