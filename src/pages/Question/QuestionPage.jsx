@@ -132,7 +132,7 @@ function QuestionPage() {
       </div>
       {
         !isLoggedIn ? (<div className="text-center ">
-          <Link to="/login" className="gc-bg-green w-[10rem] py-2 px-5 text-white rounded-md mb-2">View Solution</Link>
+          <Link to="/login/gotoprevstate" className="gc-bg-green w-[10rem] py-2 px-5 text-white rounded-md mb-2">View Solution</Link>
         </div>) : (<></>)
       }
     </div>

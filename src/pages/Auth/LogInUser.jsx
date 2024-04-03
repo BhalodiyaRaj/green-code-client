@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import {useForm} from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { LogoWithName } from "../../assets/images";
@@ -15,14 +15,21 @@ const schema = yup.object({
 
 function LogInUser(){
     const Navigate = useNavigate();
+    const params = useParams();
     const {LogInUser} = useContext(AuthContext);
     const {register, handleSubmit,formState: { errors }} = useForm({resolver: yupResolver(schema)});
     const [errorMessages, setErrorMessages] = useState('');
+    console.log(params)
 
     function onSubmit(data){
         loginUser(data).then(()=>{
             LogInUser();
-            Navigate("/");
+           
+            if(params.prevstate == 'gotoprevstate'){
+                Navigate(-1);
+            }else{
+                Navigate('/')
+            }
         }).catch((data)=>{
             if(data.code === 'invalid_data')setErrorMessages('Invalid username or password')
         })
@@ -41,7 +48,7 @@ function LogInUser(){
                 className="border rounded-lg p-1 mb-3" />
                 <p className="text-xs text-red-500">{errors.username?.message}</p>
                 <label className="text-sm text-gray-500">Password</label>
-                <input type="text" placeholder="Password" {...register('password')}
+                <input type="password" placeholder="Password" {...register('password')}
                 className="border rounded-lg p-1 mb-3" />
                 <p className="text-xs text-red-500">{errors.password?.message}</p>
                 <input type="submit" value="Log In" className="gc-bg-green text-white rounded-lg p-1 mt-2 cursor-pointer" />
