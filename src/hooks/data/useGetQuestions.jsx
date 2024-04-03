@@ -6,7 +6,6 @@ function useGetQuestions(search,level='',categories=[],skip,limit){
     const [questions, setQuestions] = React.useState([]);
 
     useEffect(()=>{
-        console.log('hit question get')
         getQuestions(search,level,categories,skip,limit).then((data)=>{
             setQuestions(data);
         })
